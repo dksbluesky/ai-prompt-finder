@@ -14,7 +14,7 @@ export const synonyms:Record<string,string[]>={
 const norm=(s:string)=>s.toLocaleLowerCase().normalize('NFKC').replace(/[\s\p{P}\p{S}]+/gu,' ').trim();
 const tokens=(s:string)=>norm(s).split(/\s+/).filter(Boolean);
 export type SearchIndex=Array<{prompt:Prompt;title:string;label:string;aliases:string;keywords:string;category:string;description:string;body:string}>;
-export function buildSearchIndex(items:Prompt[]):SearchIndex{return items.map(prompt=>({prompt,title:norm(prompt.title),label:norm(prompt.quickLabel||''),aliases:norm(prompt.aliases.join(' ')),keywords:norm(prompt.keywords.join(' ')),category:norm(prompt.category),description:norm(prompt.description),body:norm(prompt.template)}));}
+export function buildSearchIndex(items:Prompt[]):SearchIndex{return items.map(prompt=>({prompt,title:norm(prompt.title),label:norm(prompt.quickLabel||''),aliases:norm(prompt.aliases.join(' ')),keywords:norm([...prompt.keywords,prompt.english?.title||'',prompt.english?.description||''].join(' ')),category:norm(`${prompt.category} ${prompt.english?.category||''}`),description:norm(`${prompt.description} ${prompt.english?.description||''}`),body:norm(`${prompt.template} ${prompt.english?.template||''}`)}));}
 export function searchIndexed(index:SearchIndex,query:string,collection='all',category='all'):SearchHit[]{
  const q=norm(query); const qt=tokens(q); const expanded=new Set(qt);const matchedSynonyms:string[]=[];
  for(const [key,values] of Object.entries(synonyms)) if(q.includes(norm(key))||qt.includes(norm(key))) values.forEach(v=>{tokens(v).forEach(x=>expanded.add(x));matchedSynonyms.push(norm(v));});
