@@ -1,0 +1,29 @@
+import type { Prompt } from '../types';
+
+export const SOURCE = 'https://www.aiposthub.com/chatgpt-99-prompts-guide/';
+export const categories = ['寫作與改寫','摘要與資料整理','研究與查證','創意與內容企劃','商業與行銷','學習與教學','資料分析與決策','程式開發','效率、自動化與品質檢查'];
+// Titles and quick labels are source identities. Adapted templates below are independently written.
+const rows:[string,string][] = [
+['縮短文字','/shorten'],['擴寫段落','/expand'],['改寫語氣','/tone'],['提升清晰度','/clarity'],['修正文法','/proofread'],['轉成白話','/plain'],['轉成商務信件','/email'],['產生標題','/headline'],['寫開場','/hook'],['寫結論','/conclusion'],['保留作者聲音','/voice'],
+['重點摘要','/summarize'],['主管摘要','/exec-summary'],['會議紀錄','/minutes'],['比較兩份文件','/compare'],['建立時間線','/timeline'],['抽取數字','/extract'],['分類資訊','/classify'],['轉成 FAQ','/faq'],['建立術語表','/glossary'],['整理待辦','/tasks'],['找遺漏資訊','/gaps'],
+['建立研究問題','/questions'],['來源分級','/sources'],['主張查核表','/claimcheck'],['區分事實與觀點','/fact-vs-opinion'],['找反方證據','/counter'],['評估研究品質','/studycheck'],['辨認因果誤用','/causality'],['建立訪談題綱','/interview'],['研究摘要對照','/synthesize'],['引用定位','/quotecheck'],['查核完成度','/verify'],
+['腦力激盪','/brainstorm'],['內容支柱','/pillars'],['社群貼文','/social'],['短影音腳本','/shortvideo'],['內容系列','/series'],['案例故事','/casestudy'],['比喻解釋','/analogy'],['反常識角度','/contrarian'],['故事大綱','/story'],['活動企劃','/event'],['內容再利用','/repurpose'],
+['目標客群','/persona'],['價值主張','/valueprop'],['競品比較','/competitors'],['行銷漏斗','/funnel'],['廣告文案變體','/adcopy'],['銷售頁架構','/landingpage'],['顧客訪談分析','/voice-of-customer'],['客訴回覆','/complaint'],['定價假設','/pricing'],['KPI 設計','/kpi'],['提案挑戰','/pushback'],
+['學習地圖','/roadmap'],['蘇格拉底教學','/socratic'],['分層解釋','/levels'],['製作練習題','/quiz'],['錯題診斷','/errorcheck'],['間隔複習卡','/flashcards'],['費曼技巧','/feynman'],['閱讀導覽','/readingmap'],['考前複習','/studyplan'],['語言練習','/language'],['教案設計','/lessonplan'],
+['資料品質檢查','/datacheck'],['描述性分析','/describe'],['建立假設','/hypotheses'],['決策矩陣','/matrix'],['根因分析','/rootcause'],['風險清單','/risk'],['情境分析','/scenarios'],['利害關係人分析','/stakeholders'],['優先順序','/priority'],['反方審查','/redteam'],['決策備忘錄','/decisionmemo'],
+['解釋程式碼','/explaincode'],['除錯計畫','/debug'],['程式碼審查','/codereview'],['重構建議','/refactor'],['撰寫測試','/tests'],['產生文件','/docs'],['資料庫查詢','/sql'],['正規表示式','/regex'],['安全檢查','/security'],['技術方案比較','/comparestack'],['實作計畫','/implplan'],
+['工作流程盤點','/workflow'],['自動化候選','/automate'],['標準作業流程','/sop'],['檢查清單','/checklist'],['模板化','/template'],['每日規劃','/dayplan'],['週回顧','/weeklyreview'],['品質自查','/qa'],['發現矛盾','/contradictions'],['最終編輯','/finaledit'],['交付前紅隊檢查','/prepublish']
+];
+const desc = ['精簡文字並保留必要意思與關鍵資訊','補足段落脈絡，讓內容更完整易讀','依指定語氣調整表達並維持原意','找出理解障礙並提供清楚版本','校正語句並解釋重要修改','將專業內容改寫成易懂說明','整理成脈絡清楚且目的明確的郵件','依內容產生多種適用標題','為指定主題設計有焦點的開場','以明確結論與後續行動收束內容','整理文字特色並產生一致風格的新稿','萃取要點與支持資訊','把長篇內容整理成決策者可快速閱讀的摘要'];
+function templateFor(n:number,title:string){
+ const source='請依據我提供的資料，協助完成「'+title+'」。先確認任務目標與必要背景，再整理重要資訊與合理步驟。只使用可由資料支持的內容；遇到缺漏、歧義或不確定之處，請明確標示並提出需要補充的問題。輸出請符合「[讀者／使用情境]」與「[格式或長度]」的需求。完成後依照 [檢查標準] 自我檢查。\n\n資料或需求：[貼上內容]';
+ if(n===15) return '請比較下方兩份資料，依 [比較面向] 整理相同處、差異、矛盾與各自缺漏；以表格呈現，並標明哪些判斷有來源支持、哪些仍待確認。不要在證據不足時替我選定勝者。\n資料 A：[內容]\n資料 B：[內容]';
+ if(n===25) return '請從下方內容抽取可查證的事實主張，整理成「主張、需要的證據、現有來源、查核狀態」表格。保留原文定位；沒有證據時標示未確認，不要自行補造。\n內容：[貼上內容]';
+ if(n===59) return '請依據下方教材設計 [題數] 道題，涵蓋理解、應用與常見誤解。先只提供題目，等我作答後再逐題給答案、理由與補強建議。\n教材：[貼上內容]';
+ if(n===71) return '請分析問題「[問題]」。先整理已知證據，再列出至少三個可能原因及其支持與反對證據，標示各自信心程度；提出成本最低的驗證步驟與預期觀察。最後依證據排序結論，區分已確認與推測。';
+ if(n===76) return '請公平地挑戰以下結論，提出最有力的反方理由、可驗證證據、可能失敗情境與可行折衷方案。區分證據與假設，避免為反對而反對。\n結論：[貼上內容]';
+ if(n===79) return '請根據錯誤訊息、重現步驟與相關程式碼診斷問題。先列出證據與競爭假設，按可能性和影響排序，接著給出最小驗證步驟；未確認原因前不要大幅重寫。\n錯誤／步驟／程式碼：[貼上內容]';
+ if(n===92) return '請為「[任務]」建立可逐項勾選的執行前、執行中及完成後清單。每項須可用是／否確認，並指出必要證據與未通過時的處理方式。限制：[限制]';
+ return source;
+}
+export const originalPrompts:Prompt[] = rows.map(([title,label],i)=>{const n=i+1,category=categories[Math.floor(i/11)];return {id:`original-${String(n).padStart(2,'0')}`,collection:'original',title,quickLabel:label,originalNumber:n,category,description:desc[(n-1)%desc.length],template:templateFor(n,title),useCases:[title,category],keywords:[title,label.replace('/',''),category],aliases:[label,`第${n}項`],language:'zh-Hant',source:SOURCE,adaptation:true};});

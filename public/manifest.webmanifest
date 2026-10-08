@@ -1,0 +1,1 @@
+{"name":"AI Prompt Finder","short_name":"Prompt Finder","description":"Search and customize reusable AI prompts","start_url":"./","scope":"./","display":"standalone","background_color":"#f4f6f1","theme_color":"#10231f","icons":[{"src":"./icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
