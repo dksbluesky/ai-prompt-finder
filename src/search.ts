@@ -7,7 +7,10 @@ export const synonyms:Record<string,string[]>={
  '心智圖':['mindmap','concept map','概念圖'],'mindmap':['心智圖','概念圖'],
  '投資方案':['compare','scenario','decision','tradeoff','比較','情境'],'投資':['compare','scenario','decision','tradeoff'],
  'challenge':['redteam','critique','risk-assessment','挑戰','反方'],'assumptions':['redteam','scenario','假設','風險'],
- '摘要':['summarize','tldr','exec-summary','summary'],'比較':['compare','proscons','tradeoff'],'翻譯':['translate','語言轉換'],
+ '摘要':['summarize','tldr','exec-summary','summary'],'簡短':['shorten','tldr','精簡','縮短文字'],'簡潔':['shorten','tldr','精簡'],
+ '簡單回答':['plain','eli5','shorten'],'一句話':['tldr','shorten','摘要'],'只要重點':['tldr','summarize','摘要'],
+ 'concise':['shorten','tldr','brief','short answer'],'brief answer':['tldr','shorten'],
+ '比較':['compare','proscons','tradeoff'],'翻譯':['translate','語言轉換'],
  'plan':['actionplan','studyplan','workflow','計畫'],'原因':['rootcause','5whys','hypotheses'],
  '安全':['security-review','risk-assessment','security'],'風險':['risk-assessment','redteam','scenario']
 };
