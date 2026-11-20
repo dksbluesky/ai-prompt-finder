@@ -16,4 +16,6 @@ The 99 item identities, numbering, titles, quick labels, category positions, and
 
 Collection B contains independently authored community-style conventions. Slash names are not claims of official OpenAI functionality. Search is deterministic keyword, alias, and synonym matching; it is not AI semantic understanding.
 
+AI Image Prompts contains 99 numbered entries adapted from the nine screenshots provided by the user, plus a separate /deblur helper for editing an uploaded photo. Each entry has a bilingual description and editable prompt. The slash labels are browsing shortcuts, not built-in ChatGPT commands; actual image dimensions depend on the image tool.
+
 Personal prompts and preferences are stored in this browser on this device. They do not sync between Windows, iPhone, and Android. Export a JSON backup to move data. No backend, account, paid service, or AI API is used.
